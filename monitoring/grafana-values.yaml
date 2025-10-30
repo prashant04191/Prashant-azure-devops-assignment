@@ -1,0 +1,4 @@
+adminUser: admin
+adminPassword: admin123  # Change in production!
+service:
+  type: LoadBalancer
