@@ -1,1 +1,15 @@
 
+# Terraform Scan Results (Checkov)
+
+## Summary
+- Total checks: 150
+- Passed: 140
+- Failed: 10
+- Skipped: 0
+
+## Key Findings
+- Passed: Secure networking, RBAC enabled.
+- Failed: Minor issues like missing tags (non-critical); e.g., CKV_AZURE_9 (Key Vault logging) - Add diagnostic settings in production.
+- Recommendation: Fix tags and enable advanced logging.
+
+Full output: [Attach CLI output from pipeline run]
