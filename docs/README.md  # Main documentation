@@ -1,1 +1,29 @@
 
+# AKS Microservice Deployment with Monitoring
+
+## Overview
+This repo provisions a secure AKS environment, deploys a sample Flask app, and sets up monitoring with Prometheus/Grafana.
+
+## Setup Steps
+1. Clone repo.
+2. Configure Azure: `az login`, create SPN, set secrets in GitHub.
+3. Terraform: `cd infrastructure && terraform apply`.
+4. Deploy app: Push to main (triggers CI/CD).
+5. Monitoring: Run Helm commands above.
+
+## Access
+- AKS: `az aks get-credentials --name my-aks-cluster --resource-group aks-rg`
+- App: `kubectl get svc myapp-service` (external IP:80)
+- Grafana: `kubectl get svc grafana` (external IP:3000, user: admin, pass: admin123)
+- Key Vault: `az keyvault secret set --vault-name my-aks-kv --name mysecret --value myvalue`
+
+## Assumptions
+- Azure subscription available.
+- Basic knowledge of Terraform/K8s.
+- 2-day timeline: Kept simple; no advanced RBAC or multi-region.
+
+## Design Decisions
+- Private AKS for security.
+- Checkov for scans (faster than Terrascan).
+- GitHub Actions for CI/CD (free and integrated).
+- Daily reports via Grafana exports (manual for simplicity).
